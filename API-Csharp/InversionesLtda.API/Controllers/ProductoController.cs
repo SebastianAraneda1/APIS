@@ -57,5 +57,35 @@ namespace Clientes.API.Controllers
 
             listaProductos.Remove(idSeleccionado);
         }
+        
+        /*
+        [HttpPost]
+        public String descontarStock([FromBody] int idProducto, int cantidadProducto)
+        {
+            String response = "NoOK";
+            try
+            {
+                Producto productoSolicitado = listaProductos.FirstOrDefault(x => x.id == idProducto);
+
+                if (productoSolicitado != null)
+                {
+                    if (productoSolicitado.cantidad > cantidadProducto)
+                    {
+                        int cantidad = productoSolicitado.cantidad - cantidadProducto;
+                        listaProductos[listaProductos.IndexOf(productoSolicitado)].cantidad = cantidad;
+                        response = "OK";
+                    }
+                }
+                return response;
+            }
+            catch (System.Exception err)
+            {
+                Console.WriteLine(err);
+                return response;
+            }
+
+
+        }
+        */
     }
 }
