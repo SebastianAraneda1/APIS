@@ -1,5 +1,3 @@
 is_global = true
 build_property.RootNamespace = InversionesLtda.API
-build_property.ProjectDir = C:\Users\sebas\OneDrive\Escritorio\APIS\API-Csharp\InversionesLtda.API\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = C:\Users\Cetecom\Desktop\APIS\API-Csharp\InversionesLtda.API\

@@ -58,8 +58,7 @@ namespace Clientes.API.Controllers
             listaProductos.Remove(idSeleccionado);
         }
         
-        /*
-        [HttpPost]
+        [HttpPost("descontar")]
         public String descontarStock([FromBody] int idProducto, int cantidadProducto)
         {
             String response = "NoOK";
@@ -86,6 +85,5 @@ namespace Clientes.API.Controllers
 
 
         }
-        */
     }
 }

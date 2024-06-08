@@ -18,13 +18,13 @@ class Factura(Resource):
     def post(self):
         # definimos un objeto para la respuesta de la boleta
         objRespuesta = {
-            "id_producto": 0,
-            "precio": 0,
-            "cantidad": 0,
-            "total_venta": 0,
             "id_cliente": 0,
             "nombre_cliente": "",
-            "direccion_cliente": ""
+            "direccion_cliente": "",
+            "id_producto": 0,
+            "cantidad": 0,
+            "precio": 0,
+            "total_venta": 0
         }
 
         # capturamos el json que nos llega
@@ -32,17 +32,23 @@ class Factura(Resource):
 
         # generamos una nueva consulta hacia el api de cliente
         cliente_response = requests.get(url_cliente+"/"+ str(json["id_cliente"]))
-        print(cliente_response.status_code)
-        if(cliente_response.status_code == 200):
+        producto_response = request.get(url_producto + "/" + str(json["id_producto"]))
+
+        print("Estado de respuesta cliente: " + cliente_response.status_code)
+        print("Estado de respuesta producto: " + producto_response.status_code)
+        print("")
+
+        if(cliente_response.status_code == 200 and producto_response.status_code == 200):
             cliente_json = cliente_response.json()
+            producto_json = producto_response.json()
 
             objRespuesta["id_cliente"] = cliente_json["id"]
             objRespuesta["nombre_cliente"] = cliente_json["nombre"]
             objRespuesta["direccion_cliente"] = cliente_json["direccion"]
-            objRespuesta["id_producto"] = json["producto_id"]
-            objRespuesta["cantidad"] = json["cantidad"]
-            objRespuesta["precio"] = 500
-            objRespuesta["total_venta"] = objRespuesta["precio"] * json["cantidad"]
+            objRespuesta["id_producto"] = producto_json["id"]
+            objRespuesta["cantidad"] = producto_json["cantidad"]
+            objRespuesta["precio"] = producto_json["precio"]
+            objRespuesta["total_venta"] = producto_json["precio"] * producto_json["cantidad"]
 
         return objRespuesta
     
