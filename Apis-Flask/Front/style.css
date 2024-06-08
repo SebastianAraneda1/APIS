@@ -9,7 +9,7 @@ body{
     background-color: rgb(246, 250, 7);
     margin-left: 350px;
     margin-right: 350px;
-    margin-top: 100px;
+    margin-top: 50px;
     border: 15%;
 }
 
@@ -24,9 +24,5 @@ body{
     margin-right: 350px;
     margin-top: 50px;
     border: 15%;
-}
-
-.formulario{
     text-align: center;
-    color: rgb(1, 27, 73);
 }
