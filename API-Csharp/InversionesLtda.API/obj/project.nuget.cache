@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "NKkSPmQycg4=",
+  "dgSpecHash": "+FnMkqwSpYg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sebas\\OneDrive\\Escritorio\\APIS\\API-Csharp\\InversionesLtda.API\\InversionesLtda.API.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Fabian\\Desktop\\APIS\\API-Csharp\\InversionesLtda.API\\InversionesLtda.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Fabian\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Fabian\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Fabian\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Fabian\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+  ],
   "logs": []
 }
