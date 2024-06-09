@@ -11,8 +11,7 @@ namespace Clientes.API.Models
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public int precio { get; set; }
-        public int cantidad { get; set; } 
-
+        public int cantidad { get; set; }
 
     }
 }

@@ -7,8 +7,20 @@
       "RelativeMoniker": "D:0:0:{F3928AF3-4731-449C-82D3-544487BCC76B}|InversionesLtda.API\\InversionesLtda.API.csproj|solutionrelative:inversionesltda.api\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F3928AF3-4731-449C-82D3-544487BCC76B}|InversionesLtda.API\\InversionesLtda.API.csproj|c:\\users\\sebas\\onedrive\\escritorio\\apis\\api-csharp\\inversionesltda.api\\models\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3928AF3-4731-449C-82D3-544487BCC76B}|InversionesLtda.API\\InversionesLtda.API.csproj|solutionrelative:inversionesltda.api\\models\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F3928AF3-4731-449C-82D3-544487BCC76B}|InversionesLtda.API\\InversionesLtda.API.csproj|c:\\users\\sebas\\onedrive\\escritorio\\apis\\api-csharp\\inversionesltda.api\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3928AF3-4731-449C-82D3-544487BCC76B}|InversionesLtda.API\\InversionesLtda.API.csproj|solutionrelative:inversionesltda.api\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3928AF3-4731-449C-82D3-544487BCC76B}|InversionesLtda.API\\InversionesLtda.API.csproj|c:\\users\\sebas\\onedrive\\escritorio\\apis\\api-csharp\\inversionesltda.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F3928AF3-4731-449C-82D3-544487BCC76B}|InversionesLtda.API\\InversionesLtda.API.csproj|solutionrelative:inversionesltda.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3928AF3-4731-449C-82D3-544487BCC76B}|InversionesLtda.API\\InversionesLtda.API.csproj|c:\\users\\sebas\\onedrive\\escritorio\\apis\\api-csharp\\inversionesltda.api\\models\\descontarstockrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3928AF3-4731-449C-82D3-544487BCC76B}|InversionesLtda.API\\InversionesLtda.API.csproj|solutionrelative:inversionesltda.api\\models\\descontarstockrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,17 +30,55 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive\\Escritorio\\APIS\\API-Csharp\\InversionesLtda.API\\Models\\ResponseDTO.cs",
+              "RelativeDocumentMoniker": "InversionesLtda.API\\Models\\ResponseDTO.cs",
+              "ToolTip": "C:\\Users\\sebas\\OneDrive\\Escritorio\\APIS\\API-Csharp\\InversionesLtda.API\\Models\\ResponseDTO.cs",
+              "RelativeToolTip": "InversionesLtda.API\\Models\\ResponseDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T23:10:10.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive\\Escritorio\\APIS\\API-Csharp\\InversionesLtda.API\\appsettings.json",
+              "RelativeDocumentMoniker": "InversionesLtda.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\sebas\\OneDrive\\Escritorio\\APIS\\API-Csharp\\InversionesLtda.API\\appsettings.json",
+              "RelativeToolTip": "InversionesLtda.API\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-08T22:03:39.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DescontarStockRequest.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive\\Escritorio\\APIS\\API-Csharp\\InversionesLtda.API\\Models\\DescontarStockRequest.cs",
+              "RelativeDocumentMoniker": "InversionesLtda.API\\Models\\DescontarStockRequest.cs",
+              "ToolTip": "C:\\Users\\sebas\\OneDrive\\Escritorio\\APIS\\API-Csharp\\InversionesLtda.API\\Models\\DescontarStockRequest.cs",
+              "RelativeToolTip": "InversionesLtda.API\\Models\\DescontarStockRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T20:07:46.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Producto.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\OneDrive\\Escritorio\\APIS\\API-Csharp\\InversionesLtda.API\\Models\\Producto.cs",
               "RelativeDocumentMoniker": "InversionesLtda.API\\Models\\Producto.cs",
               "ToolTip": "C:\\Users\\sebas\\OneDrive\\Escritorio\\APIS\\API-Csharp\\InversionesLtda.API\\Models\\Producto.cs",
               "RelativeToolTip": "InversionesLtda.API\\Models\\Producto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-07T21:17:44.624Z",
               "EditorCaption": ""
@@ -41,7 +91,7 @@
               "RelativeDocumentMoniker": "InversionesLtda.API\\Controllers\\ProductoController.cs",
               "ToolTip": "C:\\Users\\sebas\\OneDrive\\Escritorio\\APIS\\API-Csharp\\InversionesLtda.API\\Controllers\\ProductoController.cs",
               "RelativeToolTip": "InversionesLtda.API\\Controllers\\ProductoController.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAYwFgAAAAKAAAA",
+              "ViewState": "AQIAADsAAAAAAAAAAADwv0gAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-07T21:14:00.911Z",
               "EditorCaption": ""

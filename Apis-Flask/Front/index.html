@@ -25,14 +25,71 @@
                     <label for="txtCantidad">Cantidad:</label>
                     <input type="number" name="txtCantidad" id="txtCantidad">
                     <br>
+                    <label for="tipo_entrega">Tipo de entrega:</label>
+                    <select name="tipo_entrega" id="tipo_entrega">
+                        <option value="0">Despacho</option>
+                        <option value="1">Retiro</option>
+                    </select>
                 <div class="botonEnviar">
                     <button id="btnEnviar" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
         </form>
     </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Direccion</th>
+                    <th>Producto</th>
+                    <th>Total</th>
+                    <th>Tipo Entrega</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
 
     <script type="text/javascript">
+
+        let ListaBoleta = []
+
+        // Añadir registro de boleta
+        const AgregarBoleta = (listaBoletas) => {
+            const tbody = document.getElementById('tbody');
+            let nuevasBoletas = "";
+            listaBoletas.forEach((boleta, index) => {
+                nuevasBoletas += `<tr id="tr${index}">
+                    <td>${boleta.id_cliente}</td>
+                    <td>${boleta.nombre_cliente}</td>
+                    <td>${boleta.direccion_cliente}</td>
+                    <td>${boleta.nombre_producto}</td>
+                    <td>${boleta.total_venta}</td>
+                    <td>${boleta.tipo_entrega}</td>
+                    <td>    
+                        <select name="estado" id="estado${index}" onchange="EliminarBoleta(${index})">
+                            <option value="0" selected default disable>Pendiente</option>
+                            <option value="1">Entregado</option>
+                        </select>
+                    </td>
+                </tr>`;
+            })
+            
+            tbody.innerHTML = nuevasBoletas;
+           
+        }
+
+        //Eliminar boletas
+        const EliminarBoleta = (idx) => {
+            ListaBoleta = ListaBoleta.splice(idx);
+            const tr = document.getElementById("tr"+idx);
+            console.log("TR SELECCIONADO", tr)
+            tr.style.display = "none"
+        }
 
         //****LISTAR PRODUCTOS****
         const cboProducto = document.getElementById('cboProducto');
@@ -88,88 +145,83 @@
         });
         //****FIN LISTAR CLIENTES****
 
-        function clickEnviar(e){
+        function clickEnviar(e) {
             e.preventDefault();
             const idCliente = document.getElementById("cboCliente").value;
             const idProducto = document.getElementById("cboProducto").value;
             const cantidad = document.getElementById("txtCantidad").value;
+            const tipoEntrega = document.getElementById("tipo_entrega").value;
             
             const objEnvio = {
                 "id_cliente": idCliente,
-                "producto_id": idProducto,
-                "cantidad": cantidad
+                "id_producto": idProducto,
+                "cantidad": cantidad,
+                "tipo_entrega": tipoEntrega
             };
             console.log({objEnvio});
             
-            // envio a factura - API FLASK
-            fetch("http://localhost:5001/api/boleta", {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                },
-                mode: 'cors',
-                method: 'POST',
-                body: JSON.stringify(objEnvio)
-            }).then(async function(e){
-                await e.json().then((obj) => { console.log({obj}) });
-            }).catch(function(error){ alert(error.message) })
-            .finally(function(){
-                alert("Completado");
-                /*
-                JSON.parse("{ 'id': 5, 'name': 'oli' }");
-                {
-                    "id": 5,
-                    "name": "oli"
-                }
-                */
-            });
-            
-            //###############################################################################-
+            enviarFactura(objEnvio)
+                .then(objFactura => {
+                    debugger;
+                    if(objFactura.id_cliente == 0){
+                        alert("STOCK INSUFICIENTE")
+                    }else{
+                        descontarStock(idProducto, cantidad);
+                        ListaBoleta.push(objFactura);
+                        AgregarBoleta(ListaBoleta);
+                    }
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        }
 
-             // Primero, enviamos la información a la API de factura
-             fetch("http://localhost:5001/api/boleta", {
+        function enviarFactura(objEnvio) {
+            return fetch("http://localhost:5001/api/boleta", {
                 headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+                    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+                    "Content-Type": "application/json"
                 },
                 mode: 'cors',
                 method: 'POST',
                 body: JSON.stringify(objEnvio)
-            }).then(response => {
+            })
+            .then(response => {
                 if (!response.ok) {
                     throw new Error('Error en la petición: ' + response.statusText);
                 }
                 return response.json();
-            }).then(objFactura => {
-                console.log({objFactura});
-                // Si la factura se crea correctamente, descontamos el stock
-                return fetch("http://localhost:22435/api/producto/descontar", {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*",
-                    },
-                    mode: 'cors',
-                    method: 'POST',
-                    body: JSON.stringify({ IdProducto: idProducto, CantidadProducto: cantidad })
-                });
-            }).then(responseStock => {
-                if (!responseStock.ok) {
-                    throw new Error('Error al descontar stock: ' + responseStock.statusText);
-                }
-                return responseStock.text();
-            }).then(resultadoStock => {
-                console.log(resultadoStock);
-                alert("Compra completada y stock actualizado");
-            }).catch(error => {
-                alert(error.message);
             });
-
-            //##############################################################################
-
         }
+
+        function descontarStock(idProducto, cantidad) {
+            fetch("http://localhost:22435/api/producto/descontar", {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+                    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+                    "Content-Type": "application/json"
+                },
+                mode: 'cors',
+                method: 'POST',
+                body: JSON.stringify({ IdProducto: parseInt(idProducto), CantidadProducto: parseInt(cantidad) })
+            })
+            .then(response => {
+                console.log(response);
+                if (!response.ok) {
+                    throw new Error('Error al descontar stock: ' + response.statusText);
+                }
+                return console.log(response);
+            });
+        }
+
 
         const btnEnviar = document.getElementById('btnEnviar');
         btnEnviar.addEventListener("click", clickEnviar);
+
+
 
     </script>
 

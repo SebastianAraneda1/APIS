@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Clientes.API.Models;
+using InversionesLtda.API.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -59,20 +60,22 @@ namespace Clientes.API.Controllers
         }
         
         [HttpPost("descontar")]
-        public String descontarStock([FromBody] int idProducto, int cantidadProducto)
-        {
-            String response = "NoOK";
+        public ResponseDTO descontarStock([FromBody] DescontarStockRequest request){
+            ResponseDTO response = new ResponseDTO();
+            response.status = 500;
+            response.message = "NoOK";
             try
             {
-                Producto productoSolicitado = listaProductos.FirstOrDefault(x => x.id == idProducto);
+                Producto productoSolicitado = listaProductos.FirstOrDefault(x => x.id == request.IdProducto);
 
                 if (productoSolicitado != null)
                 {
-                    if (productoSolicitado.cantidad > cantidadProducto)
+                    if (productoSolicitado.cantidad > request.CantidadProducto)
                     {
-                        int cantidad = productoSolicitado.cantidad - cantidadProducto;
+                        int cantidad = productoSolicitado.cantidad - request.CantidadProducto;
                         listaProductos[listaProductos.IndexOf(productoSolicitado)].cantidad = cantidad;
-                        response = "OK";
+                        response.status = 200;
+                        response.message = "OK";
                     }
                 }
                 return response;
@@ -82,7 +85,6 @@ namespace Clientes.API.Controllers
                 Console.WriteLine(err);
                 return response;
             }
-
 
         }
     }
